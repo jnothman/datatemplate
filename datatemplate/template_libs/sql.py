@@ -46,7 +46,7 @@ class SelectNode(Node):
         return "<SelectNode %s>" % expr
     
     def execute_query(self, context):
-        expr = ''.join(v.resolve(context, True) if hasattr(v, 'resolve') else v for v in self.expr)
+        expr = ''.join(unicode(v.resolve(context, True)) if hasattr(v, 'resolve') else v for v in self.expr)
         cursor = context[self.connection_var].cursor()
         try:
             cursor.execute('SELECT %s' % expr)
