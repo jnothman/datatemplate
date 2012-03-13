@@ -11,5 +11,6 @@ setup(name='datatemplate',
       packages=['datatemplate', 'datatemplate.template_libs', 'datatemplate.load_libs'],
       scripts=['scripts/datatemplate'],
       install_requires=['django'],
+      license='Apache 2.0',
      )
 
