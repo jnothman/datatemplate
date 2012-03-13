@@ -8,6 +8,6 @@ ESCAPED = r'\{}%&#$_'
 
 @register.filter
 def texescape(value):
-    return ''.join('\\' + c if c in ESCAPED else c for c in value)
+    return ''.join('\\' + c if c in ESCAPED else c for c in unicode(value))
 texescape = stringfilter(texescape)
 
