@@ -13,15 +13,19 @@ Renders Django templates using a context loaded from files:
 Other variables may be set on the command-line using --var and --json-var.
 """
 
+from django.conf import settings
+try:
+    settings.configure()
+except RuntimeError:
+    pass # assume already configured
+
 import types
 from django.template import Template, Context, add_to_builtins
-from django.conf import settings
-from template_libs.sql import CONNECTION_VAR
-settings.configure()
-add_to_builtins('template_libs.withjson')
-add_to_builtins('template_libs.sql')
-add_to_builtins('template_libs.tex')
-add_to_builtins('template_libs.numeric')
+from datatemplate.template_libs.sql import CONNECTION_VAR
+add_to_builtins('datatemplate.template_libs.withjson')
+add_to_builtins('datatemplate.template_libs.sql')
+add_to_builtins('datatemplate.template_libs.tex')
+add_to_builtins('datatemplate.template_libs.numeric')
 
 import csv
 class tab(csv.Dialect):
@@ -77,7 +81,7 @@ def csvsql(csvfile, connection=None, table='data', **csv_kwargs):
     if not hasattr(csvfile, 'read'):
         csvfile = open(csvfile)
     def context_maker(context):
-        from load_libs.csv2sqlite import convert
+        from datatemplate.load_libs.csv2sqlite import convert
         connection = convert(csvfile, context.get(CONNECTION_VAR, ':memory:'), table=table, temporary=True, **csv_kwargs)
         return {CONNECTION_VAR: connection}
     return context_maker
@@ -198,5 +202,5 @@ if __name__ == "__main__":
         parser.error('No positional arguments permitted')
 
     if not opts.rendered:
-        render(sys.stdin, opts.context_makers, sys.stdout)
+        render(sys.stdin, getattr(opts, 'context_makers', {}), sys.stdout)
 
