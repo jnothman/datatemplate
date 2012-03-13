@@ -18,7 +18,18 @@ For example, ``templates/html_table.tpl`` and ``templates/tex_table.tpl`` can be
 * ``{% forselect field1, field2 from blah %}`` iterates through rows of the query, providing the forloop variable for additional control.
 * Context variables in queries are resolved: ``{% select field1, field2 from {{table_var}} %}``
 
-As such, ``datatemplate`` allows the generic formatting of SQL results over CSV data!
+As such, ``datatemplate`` allows the robust formatting of SQL results over CSV data!
+
+Note: although datatemplate (currently) uses the Django templating engine, it is not intended to be used for Django projects.
+
+Why?
+----
+
+In writing research papers, one often has a large quantity of result data, of which only a small fragment needs to be shown in any particualr paper. However, the underlying result data may change, and different reports/papers will often show different levels of detail.
+
+Manual maintenance of tables in reports can be painful, especially if they are complicated LaTeX tables with multi-row and multi-column spans. ``datatemplate`` intends to be a generic tool for loading, extracting and formatting the necessary data.
+
+While it may not be extremely efficient, it is relatively painless!
 
 Installation
 ------------
