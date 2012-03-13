@@ -31,6 +31,8 @@ Manual maintenance of tables in reports can be painful, especially if they are c
 
 While it may not be extremely efficient, it is relatively painless!
 
+See the ``examples/`` directory for some of the sorts of things that can be easily accomplished with these spiced-up Django templates. (Note that because Django templates can make a mess of whitespace, the tool is best used to output a format which is not whitespace-sensitive.)
+
 Installation
 ------------
 
