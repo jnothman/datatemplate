@@ -2,7 +2,7 @@ import re
 from django.template import Library, Node, Context, TemplateSyntaxError
 from django.template.defaulttags import ForNode
 
-CONNECTION_VAR = 'db_connection'
+CONNECTION_VAR = '_db_connection'
 
 register = Library()
 
