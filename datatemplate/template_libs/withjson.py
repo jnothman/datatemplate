@@ -1,5 +1,5 @@
 import cjson
-from django.template import Library, Node, Context
+from django.template import Library, Node, Context, TemplateSyntaxError
 from django.template.defaultfilters import stringfilter
 
 register = Library()

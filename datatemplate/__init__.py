@@ -27,12 +27,12 @@ add_to_builtins('datatemplate.template_libs.sql')
 add_to_builtins('datatemplate.template_libs.tex')
 add_to_builtins('datatemplate.template_libs.numeric')
 
-import csv
-class tab(csv.Dialect):
+import csv as csv_
+class tab(csv_.Dialect):
     delimiter = '\t'
-    quoting = csv.QUOTE_NONE
+    quoting = csv_.QUOTE_NONE
     lineterminator = '\n'
-csv.register_dialect('tab', tab)
+csv_.register_dialect('tab', tab)
 
 def render(template, context={}, out=None):
     if hasattr(template, 'read'):

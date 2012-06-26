@@ -25,7 +25,7 @@ Note: although datatemplate (currently) uses the Django templating engine, it is
 Why?
 ----
 
-In writing research papers, one often has a large quantity of result data, of which only a small fragment needs to be shown in any particualr paper. However, the underlying result data may change, and different reports/papers will often show different levels of detail.
+In writing research papers, one often has a large quantity of result data, of which only a small fragment needs to be shown in any particular paper. However, the underlying result data may change, and different reports/papers will often show different levels of detail.
 
 Manual maintenance of tables in reports can be painful, especially if they are complicated LaTeX tables with multi-row and multi-column spans. ``datatemplate`` intends to be a generic tool for loading, extracting and formatting the necessary data.
 

@@ -43,7 +43,7 @@ class SelectNode(Node):
         self.connection_var = connection_var
 
     def __repr__(self):
-        return "<SelectNode %s>" % expr
+        return "<SelectNode %s>" % self.expr
     
     def execute_query(self, context):
         expr = ''.join(unicode(v.resolve(context, True)) if hasattr(v, 'resolve') else v for v in self.expr)
