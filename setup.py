@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='datatemplate',
-      version='0.1',
+      version='0.2',
       description='Renders various data sources via Django templates',
       author='Joel Nothman',
       author_email='joel.nothman@gmail.com',

@@ -91,7 +91,10 @@ class _SequenceResolver(object):
         cursor = self.parent.execute_query(context)
         res = cursor.fetchall()
         self.parent.loopvars = [desc[0] for desc in cursor.description]
-        return res
+        if len(cursor.description) == 1:
+            return (x for (x,) in res)
+        else:
+            return res
 
 class ForSelectNode(ForNode, SelectNode):
 
